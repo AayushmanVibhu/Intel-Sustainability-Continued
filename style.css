@@ -1,0 +1,469 @@
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0071c5 0%, #003d66 100%);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+.hero {
+  background: linear-gradient(135deg, #0071c5 0%, #003d66 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Intel Logo - SVG gets resized here */
+.hero-logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 30px;
+  /* Add a subtle drop shadow for depth */
+  filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.3));
+  /* Add a subtle animation on page load */
+  animation: fadeInDown 1s ease-out;
+  /* Smooth transition for hover effect */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Logo hover effect - slight zoom and glow */
+.hero-logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 8px 25px rgba(255, 255, 255, 0.5));
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  /* Add animation on page load */
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.95;
+  /* Add animation on page load */
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* ==========================================
+   TIMELINE SECTION
+   ========================================== */
+.timeline-section {
+  padding: 40px 0;
+  /* Prevent overflow issues from card transforms */
+  overflow: hidden;
+  /* Add extra space for hover effects */
+  padding-bottom: 60px;
+}
+
+/* Container with horizontal scroll on desktop */
+.timeline-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px 40px 20px 40px;
+  /* Add extra padding on the right for last card hover effect */
+  padding-right: 80px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Smooth scrolling on modern browsers */
+  scroll-behavior: smooth;
+  /* CSS Scroll Snap for smooth navigation */
+  scroll-snap-type: x mandatory;
+  /* Adds smooth momentum-based scrolling on touch devices */
+  -webkit-overflow-scrolling: touch;
+  /* Add perspective for 3D transforms */
+  perspective: 1500px;
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #0071c5 rgba(255, 255, 255, 0.3);
+}
+
+/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.timeline-container::-webkit-scrollbar {
+  height: 10px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  background: #0071c5;
+  border-radius: 10px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+  background: #005a9e;
+}
+
+/* ==========================================
+   TIMELINE CARDS
+   ========================================== */
+.timeline-card {
+  /* Fixed width for horizontal scrolling */
+  min-width: 320px;
+  max-width: 320px;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  /* Multi-layer shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07),
+              0 8px 16px rgba(0, 0, 0, 0.12),
+              0 16px 32px rgba(0, 0, 0, 0.08);
+  /* Smooth transition for all properties with staggered timing */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease,
+              background 0.5s ease,
+              border 0.3s ease;
+  position: relative;
+  overflow: visible;
+  /* Add cursor pointer to indicate interactivity */
+  cursor: pointer;
+  /* Scroll snap alignment - cards snap to start position */
+  scroll-snap-align: start;
+  /* Ensures cards don't shrink */
+  flex-shrink: 0;
+  /* Subtle border for depth */
+  border: 2px solid transparent;
+  /* Preserve 3D transforms */
+  transform-style: preserve-3d;
+}
+
+/* Hover effect - 3D lift with rotation and enhanced shadows */
+.timeline-card:hover {
+  transform: translateY(-15px) translateZ(20px) rotateX(5deg) scale(1.05);
+  /* Multi-layer dramatic shadow on hover */
+  box-shadow: 0 10px 20px rgba(0, 113, 197, 0.15),
+              0 20px 40px rgba(0, 61, 102, 0.2),
+              0 30px 60px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(0, 113, 197, 0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+  /* Add subtle blue border on hover */
+  border: 2px solid rgba(0, 113, 197, 0.3);
+}
+
+/* Year badge at the top */
+.card-year {
+  display: inline-block;
+  background: linear-gradient(135deg, #0071c5 0%, #003d66 100%);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin-bottom: 15px;
+  /* Multi-layer shadow for depth */
+  box-shadow: 0 4px 12px rgba(0, 61, 102, 0.3),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  /* Smooth transition with bounce effect */
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              background 0.4s ease,
+              box-shadow 0.4s ease;
+  /* Add subtle animation delay for staggered effect */
+  transition-delay: 0.05s;
+}
+
+/* Year badge animation on card hover - bouncy scale with rotation */
+.timeline-card:hover .card-year {
+  transform: scale(1.15) rotate(-2deg);
+  background: linear-gradient(135deg, #005a9e 0%, #002a4d 100%);
+  box-shadow: 0 6px 20px rgba(0, 61, 102, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 113, 197, 0.3);
+}
+
+/* Card title */
+.card-title {
+  font-size: 1.5rem;
+  color: #003d66;
+  margin-bottom: 15px;
+  font-weight: 600;
+  /* Smooth transition with delay for staggered effect */
+  transition: color 0.4s ease,
+              transform 0.4s ease,
+              text-shadow 0.4s ease;
+  transition-delay: 0.1s;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Card title effects on hover */
+.timeline-card:hover .card-title {
+  color: #0071c5;
+  transform: translateX(5px);
+  text-shadow: 0 4px 8px rgba(0, 113, 197, 0.2);
+}
+
+/* Card images */
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  /* Multi-layer shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+              0 2px 4px rgba(0, 0, 0, 0.06);
+  /* Smooth transition with staggered delay */
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.5s ease,
+              box-shadow 0.5s ease,
+              border-radius 0.5s ease;
+  transition-delay: 0.15s;
+  /* Subtle border */
+  border: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Image hover effect - dramatic zoom with filter effects */
+.timeline-card:hover .card-image {
+  transform: scale(1.08) translateY(-5px);
+  filter: brightness(1.15) contrast(1.05) saturate(1.1);
+  /* Glowing shadow effect */
+  box-shadow: 0 12px 24px rgba(0, 113, 197, 0.25),
+              0 6px 12px rgba(0, 61, 102, 0.15),
+              0 0 40px rgba(0, 113, 197, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(0, 113, 197, 0.2);
+}
+
+/* Card content area */
+.card-content {
+  margin-top: 10px;
+  /* Hide content by default */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  /* Smooth transition when revealing with delay */
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s ease,
+              margin-top 0.5s ease,
+              transform 0.5s ease;
+  transition-delay: 0.2s;
+  transform: translateY(-10px);
+}
+
+/* Reveal content on hover */
+.timeline-card:hover .card-content {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 15px;
+  transform: translateY(0);
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555;
+  /* Smooth transition with stagger */
+  transition: color 0.4s ease,
+              transform 0.4s ease;
+  transition-delay: 0.25s;
+}
+
+/* Text becomes darker and shifts on hover */
+.timeline-card:hover .card-content p {
+  color: #333;
+  transform: translateX(3px);
+}
+
+/* Add a subtle shimmer effect on hover */
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  border-radius: 15px;
+}
+
+.timeline-card:hover::before {
+  left: 100%;
+}
+
+/* ==========================================
+   FOOTER / INSTRUCTIONS
+   ========================================== */
+.instructions {
+  text-align: center;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.instructions p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN - MOBILE
+   ========================================== */
+/* Tablets and small screens */
+@media (max-width: 768px) {
+  /* Adjust hero section for mobile */
+  .hero {
+    padding: 40px 15px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  /* Timeline stacks vertically on mobile */
+  .timeline-container {
+    flex-direction: column;
+    padding: 20px;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+  
+  /* Cards take full width on mobile */
+  .timeline-card {
+    min-width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    /* Enable tap-to-reveal on mobile by using active state */
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease,
+                background 0.5s ease,
+                border 0.3s ease;
+  }
+  
+  /* Tap effect for mobile - works like hover on touch */
+  .timeline-card:active {
+    transform: translateY(-10px) scale(1.02);
+  }
+  
+  /* Adjust card padding for mobile */
+  .timeline-card {
+    padding: 25px;
+  }
+  
+  /* Increase image height for better mobile display */
+  .card-image {
+    height: 350px;
+  }
+  
+  .card-year {
+    font-size: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+  .hero-logo {
+    width: 80px;
+  }
+  
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .hero-description {
+    font-size: 0.95rem;
+  }
+  
+  .timeline-card {
+    padding: 20px;
+  }
+  
+  /* Larger images on small mobile for better visual impact */
+  .card-image {
+    height: 330px;
+  }
+  
+  .card-year {
+    font-size: 1.3rem;
+    padding: 8px 16px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .card-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   LARGE DESKTOP SCREENS
+   ========================================== */
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+  }
+  
+  .timeline-card {
+    min-width: 350px;
+    max-width: 350px;
+  }
+}
